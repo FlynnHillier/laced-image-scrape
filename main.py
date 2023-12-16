@@ -37,12 +37,12 @@ def parse(data : str) -> [str, [str]]:
         
         prod_data_str = html.find("script",{"type":"application/ld+json"})
         
-        prod_data = json.loads("".join(prod_data_str.contents))
+        prod_data = json.loads(prod_data_str.text, strict=False)
         
         return [prod_data['name'], prod_data['image']]
-    except:
-        pass
-    
+    except Exception as e:
+        raise e
+        
 def save_images(image_urls : [str], filename : str = "product_image", dir : str = "./"):
     img_saved_to_fps = []
     for [i,url] in enumerate(image_urls):
