@@ -1,0 +1,8 @@
+/products
+
+#env
+venv
+env
+
+#bin
+__pycache__
